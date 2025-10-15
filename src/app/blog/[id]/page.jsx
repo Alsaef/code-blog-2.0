@@ -1,11 +1,12 @@
 import CommentSection from '@/components/CommentSection';
+import Spech from '@/components/Spech';
 import Link from 'next/link';
 import React from 'react';
 import { FaArrowLeft } from 'react-icons/fa';
 
 const page = async({params}) => {
    const res = await fetch(
-    `${process.env.NEXT_PUBLIC_URI_API ||"https://codeblog-server.vercel.app"}/api/v1/blog/${params?.id}`,
+    `${process.env.NEXT_PUBLIC_URI_API}/api/v1/blog/${params?.id}`,
     { cache: "no-store" }
   );
   const blog = await res.json();
@@ -39,10 +40,11 @@ const page = async({params}) => {
       />
 
       {/* Blog details */}
-      <div className="p-4 md:p-6 text-gray-300 whitespace-pre-line leading-relaxed">
+      <div className="p-4 md:p-6 text-white whitespace-pre-line leading-relaxed">
         {blog?.detils}
       </div>
 
+ {/* <Spech details={blog.detils}></Spech> */}
       {/* Code Example */}
       {blog?.codeExample && (
         <div className="mockup-code w-full bg-black border-t border-gray-700 overflow-x-auto rounded-b-xl">
@@ -57,6 +59,7 @@ const page = async({params}) => {
               </pre>
             ))}
           </div>
+         
         </div>
       )}
     </div>

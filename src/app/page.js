@@ -1,6 +1,7 @@
 
 import FancySearchBar from '@/components/FancySearchBar';
 import Loading from '@/components/Loading';
+import Message from '@/components/Message';
 import ShowBlog from '@/components/ShowBlog';
 import React, { Suspense } from 'react';
 
@@ -19,6 +20,7 @@ const page = async() => {
      <Suspense fallback={<Loading></Loading>}>
        <ShowBlog blogs={blogs}></ShowBlog>
      </Suspense>
+     <Message></Message>
     </div>
   );
 };

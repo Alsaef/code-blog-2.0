@@ -15,7 +15,7 @@ const NavBar = () => {
 
                 </div>
                 <div className="navbar-end">
-                    {user?.email ?  <button onClick={logOut} className="btn rounded-full btn-error">Logout</button>: <Link href={'/login'} className="btn rounded-full">Login</Link>}
+                    {user?.email ?  <button onClick={logOut} className="btn rounded-full btn-error text-white">Logout</button>: <Link href={'/login'} className="btn rounded-full">Login</Link>}
 
                 </div>
             </div>
