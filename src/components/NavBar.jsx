@@ -8,7 +8,7 @@ const NavBar = () => {
     const { user,logOut } = useContext(AuthContext)
     return (
         <div className=''>
-            <div className="navbar bg-white/10 rounded-full px-5 py-3 backdrop-blur-md shadow-sm mx-auto lg:w-[50%] w-full z-30 ">
+            <div className="navbar bg-white/10 rounded-full px-5 py-3 backdrop-blur-md shadow-sm mx-auto lg:w-[50%] w-[95%] z-30 ">
                 <div className="navbar-start">
                     <Link href={'/'} className="btn btn-ghost text-xl">Code Blog</Link>
                 </div>
