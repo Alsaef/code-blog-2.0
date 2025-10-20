@@ -5,6 +5,8 @@ import React from 'react';
 import { FaArrowLeft } from 'react-icons/fa';
 
 const page = async({params}) => {
+  let id=params?.id
+  
    const res = await fetch(
     `${process.env.NEXT_PUBLIC_URI_API}/api/v1/blog/${params?.id}`,
     { cache: "no-store" }
@@ -64,7 +66,7 @@ const page = async({params}) => {
       )}
     </div>
 
-    <CommentSection />
+    <CommentSection id={id} />
   </div>
 </div>
 

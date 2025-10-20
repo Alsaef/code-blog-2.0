@@ -1,30 +1,47 @@
 'use client';
 import { AuthContext } from '@/Provider/AuthProvider';
 import Link from 'next/link';
-import React, { useContext, useState } from 'react';
+import { useQuery } from '@tanstack/react-query'
+import React, { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
 
-const CommentSection = () => {
-  const [comments, setComments] = useState([]);
+const CommentSection = ({id}) => {
   const [text, setText] = useState('');
   const { user } = useContext(AuthContext)
-  const handleAddComment = () => {
-    if (text.trim() === '') return;
-    const newComment = {
-      id: Date.now(),
-      name: user?.displayName,
-      message: text,
-      time: new Date().toLocaleTimeString(),
-    };
-    setComments([newComment, ...comments]);
-    setText('');
+
+   const { isPending, isError, data:commentData=[], error, refetch } = useQuery({
+    queryKey: ['todos'],
+    queryFn: async()=>{
+     const res=await axios.get(`${process.env.NEXT_PUBLIC_URI_API}/api/v1/comment`)
+     return res.data
+
+    },
+  })
+
+  const filterComments=commentData?.filter(comment=>comment.postId===id)
+
+    const handleAddComment = () => {
+    
+       const commentDataObj = {
+    email: user?.email,
+    comments: text.trim(),
+    postId: id
   };
 
+   axios.post(`${process.env.NEXT_PUBLIC_URI_API}/api/v1/comment`,commentDataObj)
+   .then(data=>{
+    console.log(data.data);
+    setText('')
+    refetch()
+   }).catch(error=>console.log(error.message))
+   
+  };
   return (
     <div className="flex justify-center ilg:tems-start items-center">
       <div className="w-full lg:max-w-2xl  bg-gray-900 border border-gray-800 rounded-xl p-5 shadow-lg">
         {/* Title */}
         <h2 className="text-xl font-semibold text-white mb-4">
-          💬 Comments ({comments.length})
+          💬 Comments ({filterComments?.length})
         </h2>
 
         {
@@ -47,21 +64,21 @@ const CommentSection = () => {
 
             {/* Comments box */}
             <div className="space-y-4 max-h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-900">
-              {comments.length === 0 ? (
+              {filterComments.length === 0 ? (
                 <p className="text-gray-400 text-sm text-center">
                   No comments yet. Be the first to comment!
                 </p>
               ) : (
-                comments.map((comment) => (
+                filterComments.map((comment) => (
                   <div
                     key={comment.id}
                     className="bg-gray-800 border border-gray-700 p-4 rounded-lg"
                   >
                     <div className="flex justify-between items-center mb-1">
-                      <h4 className="text-blue-400 font-semibold">{comment.name}</h4>
+                      <h4 className="text-blue-400 font-semibold">{comment.userDetils[0].name}</h4>
                       <span className="text-gray-500 text-xs">{comment.time}</span>
                     </div>
-                    <p className="text-gray-200 text-sm">{comment.message}</p>
+                    <p className="text-gray-200 text-sm">{comment.comments}</p>
                   </div>
                 ))
               )}

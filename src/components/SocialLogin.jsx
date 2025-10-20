@@ -5,6 +5,7 @@ import { FaGithub } from "react-icons/fa";
 import Head from 'next/head';
 import { AuthContext } from '@/Provider/AuthProvider';
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
 
 const SocialLogin = () => {
    const route=useRouter()
@@ -12,6 +13,13 @@ const SocialLogin = () => {
   const handelGoogle=()=>{
     googleSignIn()
     .then((result)=>{
+      const user = result.user;
+     ;
+      axios.post(`${process.env.NEXT_PUBLIC_URI_API}/api/v1/user`,{email:user?.email,name:user?.displayName,image:user?.photoURL,role:'user'}).then(data=>{
+        console.log(data.data);
+      }).catch(error=>{
+        console.log(error.message);
+      })
       route.push('/')
     }).catch((error)=>{
       alert(error.message)
