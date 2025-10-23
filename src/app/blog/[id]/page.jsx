@@ -4,6 +4,125 @@ import Link from 'next/link';
 import React from 'react';
 import { FaArrowLeft } from 'react-icons/fa';
 
+export async function generateMetadata({ params }) {
+  try {
+    const id = params?.id;
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_URI_API}/api/v1/blog/${id}`,
+      { cache: "no-store" }
+    );
+    const blog = await res.json();
+
+    
+    if (!blog || !blog.name) {
+      return {
+        title: "Blog Not Found",
+        description: "The blog post you are looking for does not exist.",
+        robots: {
+          index: false,
+          follow: false,
+        },
+      };
+    }
+
+    
+    const description = blog.detils
+      ? blog.detils.substring(0, 155) + "..."
+      : "Read this amazing blog post from our site.";
+
+    const canonicalUrl = `https://code-blog-2-0.vercel.app/blog/${id}`;
+    const imageUrl =
+      blog.image?.trim() ||
+      "https://developer-ratul.netlify.app/assets/my-bg-02d338d3.png";
+
+   
+    return {
+      title: `${blog.name} | Code Blog`,
+      description,
+      keywords: [
+        blog.category,
+        "JavaScript",
+        "Web Development",
+        "React",
+        "Next.js",
+        "Programming",
+      ],
+
+      alternates: {
+        canonical: canonicalUrl,
+      },
+
+      openGraph: {
+        title: blog.name,
+        description,
+        url: canonicalUrl,
+        type: "article",
+        images: [
+          {
+            url: imageUrl,
+            width: 1200,
+            height: 630,
+            alt: blog.name,
+          },
+        ],
+      },
+
+      twitter: {
+        card: "summary_large_image",
+        title: blog.name,
+        description,
+        images: [imageUrl],
+      },
+
+      robots: {
+        index: true, 
+        follow: true, 
+      },
+
+      // ✅ JSON-LD Structured Data for Google
+      other: {
+        "application/ld+json": JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": blog.name,
+          "description": description,
+          "image": [imageUrl],
+          "author": {
+            "@type": "Person",
+            "name": blog.author || "Al Saef Ratul",
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Code Blog",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://developer-ratul.netlify.app/assets/my-bg-02d338d3.png",
+            },
+          },
+          "datePublished": blog.createdAt,
+          "dateModified": blog.updatedAt,
+          "articleSection": blog.category,
+          "url": canonicalUrl,
+          "mainEntityOfPage": canonicalUrl,
+        }),
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching metadata:", error);
+    return {
+      title: "Error",
+      description: "Could not load blog post details.",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+}
+
+
+
+
 const page = async({params}) => {
   let id=params?.id
   
