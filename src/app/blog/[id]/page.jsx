@@ -165,6 +165,22 @@ const page = async({params}) => {
         {blog?.detils}
       </div>
 
+   {
+  blog?.link && (
+    <div className="p-4 md:p-4">
+      <a
+        href={blog.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-600 font-semibold underline hover:text-blue-800 transition-all duration-300"
+      >
+        🔗 Read the Full Blog Post Here
+      </a>
+    </div>
+  )
+}
+
+
  {/* <Spech details={blog.detils}></Spech> */}
       {/* Code Example */}
       {blog?.codeExample && (
