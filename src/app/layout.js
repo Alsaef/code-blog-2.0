@@ -68,6 +68,10 @@ description:
     index: true,
     follow: true,
   },
+
+   verification: {
+    google: "Qg2pUp6Qa7gEdG4gR04MyuxABxPEx86SxtROXl-P_Po",
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -77,6 +81,7 @@ export default function RootLayout({ children }) {
       cz-shortcut-listen="true"
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        
         <Provider>
           <header>
             <NavBar></NavBar>
