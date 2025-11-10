@@ -68,10 +68,6 @@ description:
     index: true,
     follow: true,
   },
-
-   verification: {
-    google: "Qg2pUp6Qa7gEdG4gR04MyuxABxPEx86SxtROXl-P_Po",
-  },
 };
 
 export default function RootLayout({ children }) {
