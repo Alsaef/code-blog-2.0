@@ -1,11 +1,10 @@
 /** @type {import('next-sitemap').IConfig} */
 const config = {
-  siteUrl: 'https://code-blog-2-0.vercel.app', 
-  generateRobotsTxt: true,                   
-  sitemapSize: 7000,
+ siteUrl: 'https://code-blog-2-0.vercel.app',
+  generateRobotsTxt: true,
   changefreq: 'daily',
   priority: 0.7,
-  exclude: ['/_not-found'],
+  sitemapSize: 7000,
 };
 
 export default config;
