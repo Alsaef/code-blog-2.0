@@ -5,6 +5,9 @@ const config = {
   changefreq: 'daily',
   priority: 0.7,
   sitemapSize: 7000,
+   additionalPaths: async (config) => [
+    await config.transform(config, '/'), // ✅ add homepage manually
+  ],
 };
 
 export default config;
