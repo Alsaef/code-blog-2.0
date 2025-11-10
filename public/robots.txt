@@ -1,5 +1,9 @@
+# *
 User-agent: *
 Allow: /
-Disallow: /cgi-bin/
 
-Sitemap: https://code-blog-2-0.vercel.app/nextsitemap.xml
+# Host
+Host: https://code-blog-2-0.vercel.app
+
+# Sitemaps
+Sitemap: https://code-blog-2-0.vercel.app/sitemap-0.xml
