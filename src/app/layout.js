@@ -78,7 +78,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-      cz-shortcut-listen="true"
+      suppressHydrationWarning={true}
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         

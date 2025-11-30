@@ -1,5 +1,4 @@
 import CommentSection from '@/components/CommentSection';
-import Spech from '@/components/Spech';
 import Link from 'next/link';
 import React from 'react';
 import { FaArrowLeft } from 'react-icons/fa';
@@ -124,7 +123,7 @@ export async function generateMetadata({ params }) {
 
 
 const page = async({params}) => {
-  let id=params?.id
+  let id=params.id
   
    const res = await fetch(
     `${process.env.NEXT_PUBLIC_URI_API}/api/v1/blog/${params?.id}`,
@@ -169,7 +168,7 @@ const page = async({params}) => {
   blog?.link && (
     <div className="p-4 md:p-4">
       <a
-        href={blog.link}
+        href={blog?.link}
         target="_blank"
         rel="noopener noreferrer"
         className="text-blue-600 font-semibold underline hover:text-blue-800 transition-all duration-300"
@@ -186,7 +185,7 @@ const page = async({params}) => {
       {blog?.codeExample && (
         <div className="mockup-code w-full bg-black border-t border-gray-700 overflow-x-auto rounded-b-xl">
           <div className="min-w-[350px] sm:min-w-full">
-            {blog.codeExample.split("\n").map((line, idx) => (
+            {blog?.codeExample?.split("\n").map((line, idx) => (
               <pre
                 key={idx}
                 data-prefix=">"

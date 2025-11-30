@@ -22,7 +22,8 @@ const CommentSection = ({id}) => {
 
     const handleAddComment = () => {
     
-       const commentDataObj = {
+    const commentDataObj = {
+    name:user?.displayName,
     email: user?.email,
     comments: text.trim(),
     postId: id
@@ -75,7 +76,7 @@ const CommentSection = ({id}) => {
                     className="bg-gray-800 border border-gray-700 p-4 rounded-lg"
                   >
                     <div className="flex justify-between items-center mb-1">
-                      <h4 className="text-blue-400 font-semibold">{comment.userDetils[0].name}</h4>
+                      <h4 className="text-blue-400 font-semibold">{comment?.name}</h4>
                       <span className="text-gray-500 text-xs">{comment.time}</span>
                     </div>
                     <p className="text-gray-200 text-sm">{comment.comments}</p>
