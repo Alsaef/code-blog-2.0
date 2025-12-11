@@ -12,9 +12,10 @@ const NotFound = () => {
                     Page Not Found
                 </h2>
                 <p className="text-lg mb-8 max-w-md mx-auto">
-                    Sorry, the page you're looking for might have been moved, deleted, or the link is incorrect.
+                    Sorry, the page you&apos;re looking for might have been moved, deleted, or the link is incorrect.
                 </p>
-                
+
+
                 <Link href="/" passHref>
                     <button className="btn btn-primary btn-lg transform transition-transform duration-300 hover:scale-105">
                         Return to Homepage
