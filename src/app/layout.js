@@ -47,7 +47,7 @@ export const metadata = {
     siteName: "Code Blog",
     images: [
       {
-        url: "https://raw.githubusercontent.com/Alsaef/image/refs/heads/main/logo.png",
+        url: "https://code-blog-2-0.vercel.app/logo.png",
         width: 1200,
         height: 630,
         alt: "Code Blog",
