@@ -1,6 +1,8 @@
 'use client'
 import Link from "next/link";
 import React, { useState } from "react";
+// Import the React icon
+import { FaReact } from 'react-icons/fa';
 
 const ShowBlog = ({blogs}) => {
 
@@ -10,8 +12,9 @@ const ShowBlog = ({blogs}) => {
 
   return (
     <div className="top-32 min-h-screen py-10 px-4">
+      {/* 1. UPDATED HEADING TEXT */}
       <h1 className="text-3xl font-bold text-center text-white mb-10">
-        Latest Code Blogs
+        Latest Code Blogs 💡
       </h1>
 
       <div className="flex justify-center items-center my-3">
@@ -59,7 +62,14 @@ const ShowBlog = ({blogs}) => {
           {blog.category}
         </span>
 
-        <h2 className="text-xl font-bold text-white mt-2">{blog.name}</h2>
+        {/* 2. ADDED REACT ICON */}
+        <h2 className="text-xl font-bold text-white mt-2 flex items-center">
+            {blog.name}
+            {/* Conditional Icon Rendering */}
+            {blog.category === 'react js' && (
+                <FaReact className="ml-2 text-indigo-400 text-2xl" />
+            )}
+        </h2>
 
         <p className="text-gray-400 text-sm mt-2 line-clamp-3 flex-grow">
           {blog.detils?.slice(0, 120)}...

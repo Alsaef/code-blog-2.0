@@ -16,7 +16,7 @@ const page = async() => {
 
 
   return (
-    <div>
+    <div className='mt-20'>
      <Suspense fallback={<Loading></Loading>}>
        <ShowBlog blogs={blogs}></ShowBlog>
      </Suspense>

@@ -72,7 +72,7 @@ const CommentSection = ({id}) => {
               ) : (
                 filterComments.map((comment) => (
                   <div
-                    key={comment.id}
+                    key={comment._id}
                     className="bg-gray-800 border border-gray-700 p-4 rounded-lg"
                   >
                     <div className="flex justify-between items-center mb-1">

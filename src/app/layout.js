@@ -47,7 +47,7 @@ export const metadata = {
     siteName: "Code Blog",
     images: [
       {
-        url: "https://developer-ratul.netlify.app/assets/my-bg-02d338d3.png",
+        url: "https://raw.githubusercontent.com/Alsaef/image/refs/heads/main/logo.png",
         width: 1200,
         height: 630,
         alt: "Code Blog",
@@ -62,7 +62,7 @@ export const metadata = {
 description:
   "Code Blog is your ultimate resource to learn modern web development. Explore detailed tutorials, best practices, and real-world examples on JavaScript, React, Next.js, Node.js, Express, and MongoDB. Whether you're a beginner or an advanced developer, sharpen your coding skills and stay ahead in the tech world.",
 
-    images: ["https://developer-ratul.netlify.app/assets/my-bg-02d338d3.png"],
+    images: ["https://code-blog-2-0.vercel.app/logo.png"],
   },
   robots: {
     index: true,
