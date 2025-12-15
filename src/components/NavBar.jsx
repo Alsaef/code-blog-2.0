@@ -33,7 +33,7 @@ const NavBar = () => {
               href="/"
               className="btn btn-ghost text-2xl font-extrabold text-indigo-600 hover:text-indigo-400 transition-colors"
             >
-              Code Blog
+              Code Blog AI
             </Link>
           </div>
 

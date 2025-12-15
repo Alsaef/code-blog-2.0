@@ -5,7 +5,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 
 export async function generateMetadata({ params }) {
   try {
-    const id = params?.id;
+    const {id} = await params;
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_URI_API}/api/v1/blog/${id}`,
       { cache: "no-store" }
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }) {
 
    
     return {
-      title: `${blog.name} | Code Blog`,
+      title: `${blog.name} | Code Blog AI`,
       description,
       keywords: [
         blog.category,
@@ -92,7 +92,7 @@ export async function generateMetadata({ params }) {
           },
           "publisher": {
             "@type": "Organization",
-            "name": "Code Blog",
+            "name": "Code Blog AI",
             "logo": {
               "@type": "ImageObject",
               "url": "https://developer-ratul.netlify.app/assets/my-bg-02d338d3.png",
@@ -123,17 +123,17 @@ export async function generateMetadata({ params }) {
 
 
 const page = async({params}) => {
-  let id=params.id
+  let {id}= await params
   
    const res = await fetch(
-    `${process.env.NEXT_PUBLIC_URI_API}/api/v1/blog/${params?.id}`,
+    `${process.env.NEXT_PUBLIC_URI_API}/api/v1/blog/${id}`,
     { cache: "no-store" }
   );
   const blog = await res.json();
 
  
     return (
-     <div>
+     <div className='my-28'>
   {/* Back button */}
   <div className="mx-auto w-[90%] md:w-[59%]">
     <Link href={'/'}>
