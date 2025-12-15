@@ -1,8 +1,9 @@
 'use client'
 import Link from "next/link";
 import React, { useState } from "react";
+import { AiOutlineJavaScript } from "react-icons/ai";
 // Import the React icon
-import { FaReact } from 'react-icons/fa';
+import { FaPython, FaReact } from 'react-icons/fa';
 
 const ShowBlog = ({blogs}) => {
 
@@ -68,6 +69,12 @@ const ShowBlog = ({blogs}) => {
             {/* Conditional Icon Rendering */}
             {blog.category === 'react js' && (
                 <FaReact className="ml-2 text-indigo-400 text-2xl" />
+            )}
+             {blog.category === 'javascript' && (
+                <AiOutlineJavaScript  className="ml-2 text-yellow-400 text-2xl" />
+            )}
+             {blog.category === 'python' && (
+                <FaPython  className="ml-2 text-blue-400 text-2xl" />
             )}
         </h2>
 
