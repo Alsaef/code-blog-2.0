@@ -22,23 +22,23 @@ const ShowBlog = ({blogs}) => {
   <div className="flex space-x-2 bg-gray-900 p-2 rounded-full shadow-lg">
     <button
     onClick={()=>setToggle('javascript')}
-     className={`px-5 py-2 rounded-full text-sm font-medium ${toggle==='javascript'?'bg-white text-black':'text-gray-300 hover:text-white hover:bg-white/10'}   transition-all duration-200`}
+     className={`px-5 py-2 flex items-center gap-3 rounded-full text-sm font-medium ${toggle==='javascript'?'bg-white text-black':'text-gray-300 hover:text-white hover:bg-white/10'}   transition-all duration-200`}
     >
-      JavaScript
+      JavaScript <AiOutlineJavaScript  className="ml-2 text-yellow-400 text-2xl" />
     </button>
 
     <button
      onClick={()=>setToggle('python')}
-      className={`px-5 py-2 rounded-full text-sm font-medium ${toggle==='python'?'bg-white text-black':'text-gray-300 hover:text-white hover:bg-white/10'}   transition-all duration-200`}
+      className={`px-5 py-2 flex items-center gap-3 rounded-full text-sm font-medium ${toggle==='python'?'bg-white text-black':'text-gray-300 hover:text-white hover:bg-white/10'}   transition-all duration-200`}
     >
-      Python
+      Python    <FaPython  className="ml-2 text-blue-400 text-2xl" />
     </button>
 
     <button
      onClick={()=>setToggle('react js')}
-    className={`px-5 py-2 rounded-full text-sm font-medium ${toggle==='react js'?'bg-white text-black':'text-gray-300 hover:text-white hover:bg-white/10'}   transition-all duration-200`}
+    className={`px-5 py-2 flex items-center gap-3 rounded-full text-sm font-medium ${toggle==='react js'?'bg-white text-black':'text-gray-300 hover:text-white hover:bg-white/10'}   transition-all duration-200`}
     >
-      React
+      React  <FaReact className="ml-2 text-indigo-400 text-2xl" />
     </button>
   </div>
 </div>
