@@ -19,7 +19,7 @@ const ShowBlog = ({blogs}) => {
       </h1>
 
       <div className="flex justify-center items-center my-3">
-  <div className="flex space-x-2 bg-gray-900 p-2 rounded-full shadow-lg">
+  <div className="flex space-x-2 bg-gray-900 p-2 rounded-full shadow-lg flex-wrap lg:space-y-0 md:space-y-0 sm:space-y-2 space-y-2 justify-center">
     <button
     onClick={()=>setToggle('javascript')}
      className={`px-5 py-2 flex items-center gap-3 rounded-full text-sm font-medium ${toggle==='javascript'?'bg-white text-black':'text-gray-300 hover:text-white hover:bg-white/10'}   transition-all duration-200`}
