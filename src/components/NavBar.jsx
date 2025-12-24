@@ -5,7 +5,7 @@ import React, { useContext, useState } from 'react';
 import { FaArrowLeft, FaBars, FaTimes } from 'react-icons/fa';
 
 const NavBar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const menuItems = (
@@ -61,12 +61,13 @@ const NavBar = () => {
 
             {/* Auth Buttons */}
             {user?.email ? (
-              <button
-                onClick={logOut}
-                className="btn btn-error rounded-full text-white flex items-center gap-2 hover:bg-red-600 transition-colors"
-              >
-                <FaArrowLeft /> Logout
-              </button>
+              <Link href={'/profile'}>
+              <div className="avatar">
+                <div className=" lg:w-[50px] md:w-[50] sm:w-[40px] w-[30px] rounded-full ">
+                  <img src={user?.photoURL} />
+                </div>
+              </div>
+              </Link>
             ) : (
               <Link
                 href="/login"
