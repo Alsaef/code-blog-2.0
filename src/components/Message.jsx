@@ -5,7 +5,10 @@ import { FaRobot } from 'react-icons/fa';
 
 const Message = () => {
   const [isPopup, setPopup] = useState(false);
-  const [chat, setChat] = useState([]); // single array for all messages
+  const [chat, setChat] = useState([{ 
+    sender: "bot", 
+    text: "Hello! I am Code Blog AI Bot. How can I assist you today?" 
+  }]); // single array for all messages
   const [loading, setLoading] = useState(false);
 
   const handleEvent = async (e) => {
